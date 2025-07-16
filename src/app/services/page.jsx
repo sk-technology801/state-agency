@@ -7,7 +7,6 @@ import {
   Building, Car, Heart, GraduationCap, Home, Briefcase, 
   Activity, Award, Eye, MousePointer, Zap, TrendingUp
 } from 'lucide-react';
-
 const StateAgencyServicePage = () => {
   const mountRef = useRef(null);
   const sceneRef = useRef(null);
@@ -284,95 +283,10 @@ const StateAgencyServicePage = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900">
       {/* Enhanced Header */}
-      <header className="bg-white/10 backdrop-blur-lg border-b border-white/20 sticky top-0 z-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16">
-            <div className="flex items-center space-x-4">
-              <div className="relative">
-                <div className="p-2 bg-gradient-to-r from-blue-500 to-blue-600 rounded-xl shadow-lg">
-                  <Globe className="w-8 h-8 text-white" />
-                </div>
-                <div className="absolute -top-1 -right-1 w-4 h-4 bg-green-400 rounded-full border-2 border-white"></div>
-              </div>
-              <div>
-                <h1 className="text-2xl font-bold text-white">StatePortal</h1>
-                <p className="text-sm text-blue-200">Digital Government Hub</p>
-              </div>
-            </div>
+     
+            
 
-            {/* Desktop Navigation */}
-            <nav className="hidden md:flex space-x-1">
-              {navLinks.map((link) => (
-                <button
-                  key={link.name}
-                  onClick={() => navigate(link.route)}
-                  className={`px-4 py-2 rounded-lg font-medium transition-all ${
-                    currentRoute === link.route
-                      ? 'bg-blue-600 text-white shadow-lg'
-                      : 'text-blue-100 hover:bg-white/10 hover:text-white'
-                  }`}
-                >
-                  {link.name}
-                </button>
-              ))}
-            </nav>
-
-            {/* User Actions */}
-            <div className="flex items-center space-x-4">
-              <form onSubmit={handleSearchSubmit} className="relative">
-                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
-                <input
-                  type="text"
-                  placeholder="Search services..."
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  className="pl-10 pr-4 py-2 bg-white/10 border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
-                />
-              </form>
-              <div className="relative">
-                <button className="p-2 text-blue-100 hover:text-white hover:bg-white/10 rounded-lg transition-colors">
-                  <Bell className="w-5 h-5" />
-                </button>
-                {notifications > 0 && (
-                  <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center animate-pulse">
-                    {notifications}
-                  </span>
-                )}
-              </div>
-              <button className="p-2 text-blue-100 hover:text-white hover:bg-white/10 rounded-lg transition-colors">
-                <User className="w-5 h-5" />
-              </button>
-              <button
-                className="md:hidden p-2 text-blue-100 hover:text-white"
-                onClick={() => setIsMenuOpen(!isMenuOpen)}
-              >
-                {isMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
-              </button>
-            </div>
-          </div>
-        </div>
-
-        {/* Mobile Menu */}
-        {isMenuOpen && (
-          <div className="md:hidden bg-white/10 backdrop-blur-lg border-t border-white/20 animate-slideDown">
-            <div className="px-4 py-2 space-y-1">
-              {navLinks.map((link) => (
-                <button
-                  key={link.name}
-                  onClick={() => navigate(link.route)}
-                  className={`block w-full text-left px-3 py-2 rounded-lg transition-colors ${
-                    currentRoute === link.route
-                      ? 'bg-blue-600 text-white'
-                      : 'text-blue-100 hover:bg-white/10'
-                  }`}
-                >
-                  {link.name}
-                </button>
-              ))}
-            </div>
-          </div>
-        )}
-      </header>
+       
 
       {/* Enhanced Hero Section */}
       <section className="relative py-24 overflow-hidden">
@@ -386,9 +300,9 @@ const StateAgencyServicePage = () => {
                   <span className="text-blue-200 text-sm font-medium">Award-Winning Platform</span>
                 </div>
                 <h2 className="text-5xl lg:text-6xl font-bold text-white leading-tight">
-                  Next-Gen
+                  SK
                   <span className="block bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
-                    Government
+                    Agency
                   </span>
                   Services
                 </h2>
@@ -545,9 +459,9 @@ const StateAgencyServicePage = () => {
 
           <div className="grid md:grid-cols-3 gap-8">
             {[
-              { icon: Phone, title: 'Phone Support', desc: '24/7 dedicated helpline', contact: '1-800-STATE-GOV', color: 'from-green-500 to-green-600' },
-              { icon: Mail, title: 'Email Support', desc: 'Fast response guaranteed', contact: 'support@stateportal.gov', color: 'from-blue-500 to-blue-600' },
-              { icon: MapPin, title: 'Visit Office', desc: 'In-person assistance', contact: '123 Government Plaza', color: 'from-purple-500 to-purple-600' }
+              { icon: Phone, title: 'Phone Support', desc: '24/7 dedicated helpline', contact: '03084931083-STATE-SK', color: 'from-green-500 to-green-600' },
+              { icon: Mail, title: 'Email Support', desc: 'Fast response guaranteed', contact: 'sardarsaadisaadi@gmail.com', color: 'from-blue-500 to-blue-600' },
+              { icon: MapPin, title: 'Visit Office', desc: 'In-person assistance', contact: ' 03084931083 SK-plaza fsd', color: 'from-purple-500 to-purple-600' }
             ].map((contact, index) => (
               <div key={index} className="group relative">
                 <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-8 hover:bg-white/20 transition-all duration-300 group-hover:scale-105">
@@ -564,73 +478,7 @@ const StateAgencyServicePage = () => {
         </div>
       </section>
 
-      {/* Enhanced Footer */}
-      <footer className="bg-slate-900/80 backdrop-blur-sm border-t border-white/10 text-white py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid md:grid-cols-4 gap-8">
-            <div className="space-y-4">
-              <div className="flex items-center space-x-3">
-                <div className="p-3 bg-gradient-to-r from-blue-500 to-blue-600 rounded-xl">
-                  <Globe className="w-8 h-8 text-white" />
-                </div>
-                <div>
-                  <h3 className="text-2xl font-bold">StatePortal</h3>
-                  <p className="text-blue-200">Digital Government</p>
-                </div>
-              </div>
-              <p className="text-blue-200 leading-relaxed">
-                Transforming public services through innovative technology and user-centered design.
-              </p>
-            </div>
-            
-            {[
-              {
-                title: 'Quick Links',
-                links: navLinks.map(link => ({ name: link.name, route: link.route }))
-              },
-              {
-                title: 'Services',
-                links: [
-                  { name: 'Business Registration', route: '/business' },
-                  { name: 'Vehicle Services', route: '/transport' },
-                  { name: 'Health Records', route: '/health' },
-                  { name: 'Education Services', route: '/education' }
-                ]
-              },
-              {
-                title: 'Support',
-                links: [
-                  { name: 'Help Center', route: '/help' },
-                  { name: 'Contact Us', route: '/contact' },
-                  { name: 'System Status', route: '/status' },
-                  { name: 'Privacy Policy', route: '/privacy' },
-                  { name: 'Terms of Service', route: '/terms' }
-                ]
-              }
-            ].map((section, index) => (
-              <div key={index}>
-                <h4 className="text-white font-semibold text-lg mb-4">{section.title}</h4>
-                <ul className="space-y-2">
-                  {section.links.map((link, i) => (
-                    <li key={i}>
-                      <button 
-                        onClick={() => navigate(link.route)} 
-                        className="text-blue-300 hover:text-white transition-colors"
-                      >
-                        {link.name}
-                      </button>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
-          </div>
-
-          <div className="mt-12 text-center text-blue-400 text-sm">
-            &copy; {new Date().getFullYear()} StatePortal. All rights reserved.
-          </div>
-        </div>
-      </footer>
+      
     </div>
   );
 };

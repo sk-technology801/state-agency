@@ -83,7 +83,7 @@ export default function StateAgencyHeader() {
       <div className="px-4 py-4 max-w-7xl mx-auto flex justify-between items-center">
         {/* Logo */}
         <Link href="/" className="text-2xl font-bold tracking-wide">
-          STATE AGENCY
+          GOVT AGENCY
         </Link>
 
         {/* Desktop Nav */}
@@ -92,12 +92,12 @@ export default function StateAgencyHeader() {
             <div
               key={index}
               className="relative"
+              onMouseEnter={() => setDropdownOpen(index)}
               onMouseLeave={() => setDropdownOpen(null)}
             >
               {item.dropdown ? (
                 <>
                   <button
-                    onMouseEnter={() => setDropdownOpen(index)}
                     className={`flex items-center space-x-1 hover:text-blue-300 ${
                       pathname.startsWith(item.href) ? "text-blue-300" : ""
                     }`}
@@ -106,7 +106,7 @@ export default function StateAgencyHeader() {
                     <ChevronDown className="w-4 h-4" />
                   </button>
                   {dropdownOpen === index && (
-                    <div className="absolute top-full mt-2 bg-white text-black rounded-md shadow-md w-48">
+                    <div className="absolute top-full mt-2 bg-white text-black rounded-md shadow-md w-48 z-50">
                       {item.dropdown.map((sub, subIndex) => (
                         <Link
                           key={subIndex}
