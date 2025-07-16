@@ -72,11 +72,11 @@ export default function StateAgencyHeader() {
           </div>
           <div className="flex items-center space-x-2">
             <Phone className="w-4 h-4" />
-            <span>1-800-STATE-GOV</span>
+            <span>+923084931083</span>
           </div>
           <div className="flex items-center space-x-2">
             <Mail className="w-4 h-4" />
-            <span>info@state.gov</span>
+            <span>sardarsaadisaadi@gmail.com</span>
           </div>
         </div>
         <div className="text-xs">
