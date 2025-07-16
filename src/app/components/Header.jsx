@@ -1,8 +1,10 @@
+
+// ./src/components/StateAgencyHeader.jsx
 "use client";
 
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
 import {
   Menu,
   X,
@@ -49,12 +51,15 @@ export default function StateAgencyHeader() {
   const [dropdownOpen, setDropdownOpen] = useState(null);
   const [currentTime, setCurrentTime] = useState(new Date());
   const pathname = usePathname();
-  const router = useRouter();
 
   useEffect(() => {
     const timer = setInterval(() => setCurrentTime(new Date()), 1000);
     return () => clearInterval(timer);
   }, []);
+
+  const toggleDropdown = (index) => {
+    setDropdownOpen(dropdownOpen === index ? null : index);
+  };
 
   return (
     <header className="w-full z-50 bg-gradient-to-r from-blue-900 to-indigo-900 text-white">
@@ -89,15 +94,11 @@ export default function StateAgencyHeader() {
         {/* Desktop Nav */}
         <nav className="hidden md:flex items-center space-x-6">
           {navItems.map((item, index) => (
-            <div
-              key={index}
-              className="relative"
-              onMouseEnter={() => setDropdownOpen(index)}
-              onMouseLeave={() => setDropdownOpen(null)}
-            >
+            <div key={index} className="relative">
               {item.dropdown ? (
                 <>
                   <button
+                    onClick={() => toggleDropdown(index)}
                     className={`flex items-center space-x-1 hover:text-blue-300 ${
                       pathname.startsWith(item.href) ? "text-blue-300" : ""
                     }`}
@@ -111,7 +112,10 @@ export default function StateAgencyHeader() {
                         <Link
                           key={subIndex}
                           href={sub.href}
-                          className="block px-4 py-2 hover:bg-blue-100"
+                          className={`block px-4 py-2 hover:bg-blue-100 ${
+                            pathname === sub.href ? "bg-blue-100 text-blue-900" : ""
+                          }`}
+                          onClick={() => setDropdownOpen(null)} // Close dropdown on link click
                         >
                           {sub.name}
                         </Link>
@@ -139,7 +143,9 @@ export default function StateAgencyHeader() {
             <Link
               key={i}
               href={link.href}
-              className="flex items-center space-x-1 bg-blue-700 px-3 py-1.5 rounded text-sm hover:bg-blue-600 transition"
+              className={`flex items-center space-x-1 bg-blue-700 px-3 py-1.5 rounded text-sm hover:bg-blue-600 transition ${
+                pathname === link.href ? "bg-blue-600" : ""
+              }`}
             >
               <link.icon className="w-4 h-4" />
               <span>{link.name}</span>
@@ -161,21 +167,51 @@ export default function StateAgencyHeader() {
         <div className="md:hidden px-4 pb-4 space-y-2 bg-blue-950">
           {navItems.map((item, index) => (
             <div key={index}>
-              <Link href={item.href} className="block py-2">
-                {item.title}
-              </Link>
-              {item.dropdown && (
-                <div className="pl-4 space-y-1">
-                  {item.dropdown.map((sub, subIndex) => (
-                    <Link
-                      key={subIndex}
-                      href={sub.href}
-                      className="block text-sm text-blue-200 hover:text-white"
-                    >
-                      - {sub.name}
-                    </Link>
-                  ))}
-                </div>
+              {item.dropdown ? (
+                <>
+                  <button
+                    onClick={() => toggleDropdown(index)}
+                    className={`block py-2 w-full text-left hover:text-blue-300 ${
+                      pathname.startsWith(item.href) ? "text-blue-300" : ""
+                    }`}
+                  >
+                    {item.title}
+                    <ChevronDown
+                      className={`w-4 h-4 inline-block ml-2 transition-transform ${
+                        dropdownOpen === index ? "rotate-180" : ""
+                      }`}
+                    />
+                  </button>
+                  {dropdownOpen === index && (
+                    <div className="pl-4 space-y-1">
+                      {item.dropdown.map((sub, subIndex) => (
+                        <Link
+                          key={subIndex}
+                          href={sub.href}
+                          className={`block text-sm text-blue-200 hover:text-white ${
+                            pathname === sub.href ? "text-white" : ""
+                          }`}
+                          onClick={() => {
+                            setMobileOpen(false); // Close mobile menu on link click
+                            setDropdownOpen(null); // Close dropdown on link click
+                          }}
+                        >
+                          - {sub.name}
+                        </Link>
+                      ))}
+                    </div>
+                  )}
+                </>
+              ) : (
+                <Link
+                  href={item.href}
+                  className={`block py-2 hover:text-blue-300 ${
+                    pathname === item.href ? "text-blue-300" : ""
+                  }`}
+                  onClick={() => setMobileOpen(false)} // Close mobile menu on link click
+                >
+                  {item.title}
+                </Link>
               )}
             </div>
           ))}
@@ -184,7 +220,10 @@ export default function StateAgencyHeader() {
               <Link
                 key={index}
                 href={link.href}
-                className="flex items-center space-x-2 text-sm hover:text-blue-300"
+                className={`flex items-center space-x-2 text-sm hover:text-blue-300 ${
+                  pathname === link.href ? "text-blue-300" : ""
+                }`}
+                onClick={() => setMobileOpen(false)} // Close mobile menu on link click
               >
                 <link.icon className="w-4 h-4" />
                 <span>{link.name}</span>
