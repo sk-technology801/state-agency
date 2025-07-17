@@ -30,13 +30,7 @@ const fetchServices = async () => {
       icon: Clock,
       href: "/services/appointments",
     },
-    {
-      id: 4,
-      title: "E-Services Portal",
-      description: "Access all digital state services in one platform.",
-      icon: Globe,
-      href: "/services/portal",
-    },
+   
   ];
 };
 
